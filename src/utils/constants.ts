@@ -1,0 +1,1 @@
+export const monitors: string[] = ['HTTP/HTTPS', 'TCP', 'MONGODB', 'REDIS', 'SSL/TLS'];
