@@ -6,18 +6,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { FC, Fragment, useState } from "react";
 import { FaEye, FaEyeSlash, FaFacebookF, FaGoogle } from "react-icons/fa";
-import { useRegister } from "@/hooks/auth/useRegister";
+import { useRegister, useSocialRegister } from "@/hooks/auth/useRegister";
 import clsx from "clsx";
 import { PageLoader } from "@/components/PageLoader";
 
 const Register: FC = () => {
     const [passwordType, setPasswordType] = useState<string>('password');
     const { loading, validationErrors, setValidationErrors, onRegisterSubmit } = useRegister();
-
+    const { loading: socialAuthLoading, authWithGoogle, authWithFacebook } = useSocialRegister();
 
     return (
         <div className="relative flex flex-col h-screen mx-auto w-11/12 max-w-md rounded-lg bg-white md:w-2/3">
-            {<PageLoader />}
+            {socialAuthLoading && <PageLoader />}
             <form action={onRegisterSubmit}>
                 <div className="mt-12 w-full px-5">
                     <div className="mb-5 flex flex-col justify-between text-gray-600">
