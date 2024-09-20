@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import ApolloProvider from "@/queries/apolloProvider"
 import { apolloClient } from "@/queries/apolloClient"
+import { ToastContainer } from "react-toastify";
+import { MonitorProvider } from "@/context/MonitorContext"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,7 +33,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ApolloProvider client={apolloClient}>
-          {children}
+          <MonitorProvider>
+            {children}
+          </MonitorProvider>
+          <ToastContainer />
         </ApolloProvider>
       </body>
     </html>
