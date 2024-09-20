@@ -8,15 +8,15 @@ import { FC, Fragment, ReactElement, useState } from "react";
 import { FaEye, FaEyeSlash, FaFacebookF, FaGoogle } from "react-icons/fa";
 import clsx from "clsx";
 import { PageLoader } from "@/components/PageLoader";
-import { useLogin } from "@/hooks/auth/useLogin";
-
+import { useLogin, useSocialLogin } from "@/hooks/auth/useLogin";
 const Login: FC = (): ReactElement => {
     const [passwordType, setPasswordType] = useState<string>('password');
     const { loading, validationErrors, setValidationErrors, onLoginSubmit } = useLogin();
+    const { loading: socialAuthLoading, authWithGoogle, authWithFacebook } = useSocialLogin();
 
     return (
         <div className="relative flex flex-col h-screen mx-auto w-11/12 max-w-md rounded-lg bg-white md:w-2/3">
-            {<PageLoader />}
+            {socialAuthLoading && <PageLoader />}
             <form action={onLoginSubmit}>
                 <div className="mt-12 w-full px-5">
                     <div className="mb-5 flex flex-col justify-between text-gray-600">

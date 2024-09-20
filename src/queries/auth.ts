@@ -34,3 +34,12 @@ export const LOGIN_USER = gql`
   }
   ${authDataFragment}
 `;
+
+export const AUTH_SOCIAL_USER = gql`
+  mutation AuthSocialUser($user: SocialAuth!) {
+    authSocialUser(user: $user) {
+      ...AuthData
+    }
+  }
+  ${authDataFragment}
+`;
