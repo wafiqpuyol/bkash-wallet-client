@@ -15,7 +15,8 @@ export const loginSchema = z.object({
             message: 'Field must be either username or email.',
         }).optional(),
     email: z.string({ required_error: 'Email is a required field. ' }).email().optional(),
-    password: z.string({ message: 'Password is a required field.' }).min(4, { message: 'Password must be at least 4 characters.' }),
+    password: z.string({ message: 'Password is a required field.' })
+        .min(4, { message: 'Password must be at least 4 characters.' }).optional(),
     socialId: z.string().optional(),
     type: z.string().optional(),
 });

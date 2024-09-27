@@ -24,10 +24,11 @@ export const useLogin = (): IUserAuth => {
         console.log(resultSchema.success);
         if (!resultSchema.success) {
             setValidationErrors({
-                email: resultSchema.error.format().email?._errors[0]!,
-                password: resultSchema.error.format().password?._errors[0]!,
+                email: resultSchema.error.format().email?._errors[0],
+                password: resultSchema.error.format().password?._errors[0],
             });
         } else {
+            console.log(resultSchema);
             submitUserData(resultSchema.data, loginUser, dispatch, router, 'email/password');
         }
     }
@@ -103,9 +104,11 @@ async function submitUserData(
                     notifications: authType === 'social' ? authSocialUser.notifications : loginUser.notifications
                 }
             });
-            router.push('/');
+            router.push('/status');
         }
     } catch (error: unknown) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         showErrorToast(error.message || 'Invalid credentials');
     }
 }
