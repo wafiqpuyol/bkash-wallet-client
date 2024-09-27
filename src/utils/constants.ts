@@ -37,3 +37,29 @@ export const FREQUENCIES: IFrequency[] = [
         value: 86400
     }
 ];
+export const SSL_FREQUENCIES: IFrequency[] = [
+    {
+        name: '30 sec',
+        value: 30
+    },
+    {
+        name: '24 hours',
+        value: 86400
+    },
+    {
+        name: '5 days',
+        value: 432000
+    },
+    {
+        name: '7 days',
+        value: 604800
+    },
+    {
+        name: '15 days',
+        value: 1.296e+6
+    },
+    {
+        name: '30 days',
+        value: 2.592e+6
+    },
+];
